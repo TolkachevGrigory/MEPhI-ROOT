@@ -1,0 +1,58 @@
+//1-е задание  Работать будем с NOMINAL деревом. Нужны будут ветки 4-импульсов лидирующего лептона (lep_0_p4_fast) и потерянной энергии (met_reco_p4_fast).
+//Для начала я бы хотел увидеть от вас кинематические распределения конечных состояний распада W->enu:
+//Импульс, направление по eta и phiс, энергия. Если сичитаете что-то еще важным - рисуйте. Каждая гистограмма на отдельной канве. Обязательно подпишите оси.
+
+void exone()
+{
+  TFile* f= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/21.root", "READ");
+  auto tree = (TTree*)f->Get("NOMINAL");
+
+  TH1F *h1 = new TH1F("Pt", "TestTitle;P_{T} [GeV];Entries", 200, 0, 100);
+  TH1F *h2 = new TH1F("Eta", "TestTitle;Eta ;Entries", 200, -3, 3);
+  TH1F *h3 = new TH1F("Phi", "TestTitle;Phi ;Entries", 200, -4, 4);
+  TH1F *h4 = new TH1F("E", "TestTitle;E [GeV];Entries", 200, 0, 400);
+  TCanvas *c1 = new TCanvas("c1","",600,300);
+  TCanvas *c2 = new TCanvas("c2","",600,300);
+  TCanvas *c3 = new TCanvas("c3","",600,300);
+  TCanvas *c4 = new TCanvas("c4","",600,300);
+
+  h1->SetDirectory(gROOT);
+  h2->SetDirectory(gROOT);
+  h3->SetDirectory(gROOT);
+  h4->SetDirectory(gROOT);
+
+
+  TLorentzVector* lep_0 = 0;
+  tree->SetBranchAddress("lep_0_p4", &lep_0);
+
+  Long64_t nEvents = tree->GetEntries();
+  std::cout<<"N events: "<< nEvents << std::endl;
+    
+    for (Long64_t i = 0; i < nEvents; i++) {
+      tree->GetEntry(i);
+      h1->Fill(lep_0->Pt());
+  
+    }
+    for (Long64_t i = 0; i < nEvents; i++) {
+        tree->GetEntry(i);
+        h2->Fill(lep_0->Eta());
+    }
+    for (Long64_t i = 0; i < nEvents; i++) {
+        tree->GetEntry(i);
+        h3->Fill(lep_0->Phi());
+    }
+    for (Long64_t i = 0; i < nEvents; i++) {
+        tree->GetEntry(i);
+        h4->Fill(lep_0->E());
+    }
+  f->Close();
+    
+  c1->cd();
+  h1->Draw();
+  c2->cd();
+    h2->Draw();
+    c3->cd();
+  h3->Draw();
+    c4->cd();
+  h4->Draw();
+}

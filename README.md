@@ -1,2 +1,2 @@
-# MEPhI ROOT training project for Grrgory
+# MEPhI ROOT training project for Grirgory
 

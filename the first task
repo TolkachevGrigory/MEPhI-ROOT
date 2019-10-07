@@ -16,15 +16,9 @@ void exone()
   TH1F *h22 = new TH1F("Eta", "met_reco;Eta ;Entries", 50, -3, 3);
   TH1F *h23 = new TH1F("Phi", "met_reco;Phi ;Entries", 50, -4, 4);
   TH1F *h24 = new TH1F("E", "met_reco;E [GeV];Entries", 50, -50, 150);
-  TCanvas *c11 = new TCanvas("c11","",600,300);
-  TCanvas *c12 = new TCanvas("c12","",600,300);
-  TCanvas *c13 = new TCanvas("c13","",600,300);
-  TCanvas *c14 = new TCanvas("c14","",600,300);
-  TCanvas *c21 = new TCanvas("c21","",600,300);
-  TCanvas *c22 = new TCanvas("c22","",600,300);
-  TCanvas *c23 = new TCanvas("c23","",600,300);
-  TCanvas *c24 = new TCanvas("c24","",600,300);
-
+  
+  TCanvas *c = new TCanvas("c","",1800,1800);
+  c->Divide(2,4);
 
   h11->SetDirectory(gROOT);
   h12->SetDirectory(gROOT);
@@ -47,56 +41,33 @@ void exone()
     for (Long64_t i = 0; i < nEvents; i++) {
       tree->GetEntry(i);
       h11->Fill(lep_0->Pt());
-  
+      h12->Fill(lep_0->Eta());
+      h13->Fill(lep_0->Phi());
+      h14->Fill(lep_0->E());
+      h21->Fill(met_reco->Pt());
+      h22->Fill(met_reco->Eta());
+      h23->Fill(met_reco->Phi());
+      h24->Fill(met_reco->E());
     }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h12->Fill(lep_0->Eta());
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h13->Fill(lep_0->Phi());
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h14->Fill(lep_0->E());
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h21->Fill(met_reco->Pt());
-        
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h22->Fill(met_reco->Eta());
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h23->Fill(met_reco->Phi());
-    }
-    for (Long64_t i = 0; i < nEvents; i++) {
-        tree->GetEntry(i);
-        h24->Fill(met_reco->E());
-    }
-    
     
   f->Close();
     
-  c11->cd();
-  h11->Draw();
-  c12->cd();
-  h12->Draw();
-  c13->cd();
-  h13->Draw();
-  c14->cd();
-  h14->Draw();
-    c21->cd();
+    c->cd(1);
+    h11->Draw();
+    c->cd(2);
+    h12->Draw();
+    c->cd(3);
+    h13->Draw();
+    c->cd(4);
+    h14->Draw();
+    c->cd(5);
     h21->Draw();
-    c22->cd();
+    c->cd(6);
     h22->Draw();
-    c23->cd();
+    c->cd(7);
     h23->Draw();
-    c24->cd();
+    c->cd(8);
     h24->Draw();
 
 }
+

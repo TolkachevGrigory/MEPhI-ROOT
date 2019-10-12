@@ -3,19 +3,19 @@
 //Импульс, направление по eta и phiс, энергия. Если сичитаете что-то еще важным - рисуйте. Каждая гистограмма на отдельной канве. Обязательно подпишите оси.
  
  
-void exone()
+void the_first_task()
 {
   TFile* f= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/21.root", "READ");
   auto tree = (TTree*)f->Get("NOMINAL");
 
-  TH1F *h11 = new TH1F("Pt", "lep;P_{T} [GeV];Entries", 50, 0, 100);
-  TH1F *h12 = new TH1F("Eta", "lep;Eta ;Entries", 50, -3, 3);
-  TH1F *h13 = new TH1F("Phi", "lep;Phi ;Entries", 50, -4, 4);
-  TH1F *h14 = new TH1F("E", "lep;E [GeV];Entries", 50, 0, 400);
-  TH1F *h21 = new TH1F("Pt", "met_reco;P_{T} [GeV];Entries", 50, -10, 120);
-  TH1F *h22 = new TH1F("Eta", "met_reco;Eta ;Entries", 50, -3, 3);
-  TH1F *h23 = new TH1F("Phi", "met_reco;Phi ;Entries", 50, -4, 4);
-  TH1F *h24 = new TH1F("E", "met_reco;E [GeV];Entries", 50, -50, 150);
+  TH1F *h11 = new TH1F("Ptlep", "lep;P_{T} [GeV];Entries", 50, 0, 100);
+  TH1F *h12 = new TH1F("Etalep", "lep;Eta ;Entries", 50, -3, 3);
+  TH1F *h13 = new TH1F("Philep", "lep;Phi ;Entries", 50, -4, 4);
+  TH1F *h14 = new TH1F("Elep", "lep;E [GeV];Entries", 50, 0, 400);
+  TH1F *h21 = new TH1F("Ptmet", "met_reco;P_{T} [GeV];Entries", 50, -10, 120);
+  TH1F *h22 = new TH1F("Etamet", "met_reco;Eta ;Entries", 50, -3, 3);
+  TH1F *h23 = new TH1F("Phimet", "met_reco;Phi ;Entries", 50, -4, 4);
+  TH1F *h24 = new TH1F("Emet", "met_reco;E [GeV];Entries", 50, -50, 150);
   
   TCanvas *c = new TCanvas("c","",1800,1800);
   c->Divide(2,4);

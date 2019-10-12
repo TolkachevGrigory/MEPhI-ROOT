@@ -5,7 +5,7 @@
 //бы можно было сравнить их форму. Чтобы было удобно, поменяйте цвет линии одному из каналов. Добавьте на кана
 //легенду, которая даст понять значение линий. Зная различия в методике регистрации мюонов и электронов в
 //ATLAS, попробуйте объяснить разницу распределений.
-void extwo()
+void the_second_task()
 {
   TFile* f1= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/21.root", "READ");
   TFile* f2= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/user.dponomar.17679514._000003.SM_WLepton.root", "READ");
@@ -14,21 +14,21 @@ void extwo()
   auto munu = (TTree*)f2->Get("NOMINAL");
     
     
-  TH1F *enu11 = new TH1F("Pt", "e ;P_{T} [GeV];Entries", 150, -10, 100);
-  TH1F *enu12 = new TH1F("Eta", "e ;#eta ;Entries", 150, -3, 3);
-  TH1F *enu13 = new TH1F("Phi", "e;#phi ;Entries", 150, -4, 4);
-  TH1F *enu14 = new TH1F("E", "e;E [GeV];Entries", 150, 0, 400);
-  TH1F *enu21 = new TH1F("Pt", "#nu_{e};P_{T} [GeV];Entries", 150, -10, 120);
-  TH1F *enu23 = new TH1F("Phi", "#nu_{e};#phi ;Entries", 150, -4, 4);
-  TH1F *enu24 = new TH1F("E", "#nu_{e};E [GeV];Entries", 150, -10, 300);
+  TH1F *enu11 = new TH1F("Pte", "e ;P_{T} [GeV];Entries", 150, -10, 100);
+  TH1F *enu12 = new TH1F("Etae", "e ;#eta ;Entries", 150, -3, 3);
+  TH1F *enu13 = new TH1F("Phie", "e;#phi ;Entries", 150, -4, 4);
+  TH1F *enu14 = new TH1F("Ee", "e;E [GeV];Entries", 150, 0, 400);
+  TH1F *enu21 = new TH1F("Ptnue", "#nu_{e};P_{T} [GeV];Entries", 150, -10, 120);
+  TH1F *enu23 = new TH1F("Phinue", "#nu_{e};#phi ;Entries", 150, -4, 4);
+  TH1F *enu24 = new TH1F("Enue", "#nu_{e};E [GeV];Entries", 150, -10, 300);
   
-  TH1F *munu11 = new TH1F("Pt", "#mu;P_{T} [GeV];Entries", 150, -10, 100);
-  TH1F *munu12 = new TH1F("Eta", "#mu;#eta ;Entries", 150, -3, 3);
-  TH1F *munu13 = new TH1F("Phi", "#mu;#phi ;Entries", 150, -4, 4);
-  TH1F *munu14 = new TH1F("E", "#mu;E [GeV];Entries", 150, 0, 400);
-  TH1F *munu21 = new TH1F("Pt", "#nu_{#mu};P_{T} [GeV];Entries", 150, -10, 120);
-  TH1F *munu23 = new TH1F("Phi", "#nu_{#mu};#phi ;Entries", 150, -4, 4);
-  TH1F *munu24 = new TH1F("E", "#nu_{#mu};E [GeV];Entries", 150, -10, 300);
+  TH1F *munu11 = new TH1F("Ptmu", "#mu;P_{T} [GeV];Entries", 150, -10, 100);
+  TH1F *munu12 = new TH1F("Etamu", "#mu;#eta ;Entries", 150, -3, 3);
+  TH1F *munu13 = new TH1F("Phimu", "#mu;#phi ;Entries", 150, -4, 4);
+  TH1F *munu14 = new TH1F("Emu", "#mu;E [GeV];Entries", 150, 0, 400);
+  TH1F *munu21 = new TH1F("Ptnumu", "#nu_{#mu};P_{T} [GeV];Entries", 150, -10, 120);
+  TH1F *munu23 = new TH1F("Phinumu", "#nu_{#mu};#phi ;Entries", 150, -4, 4);
+  TH1F *munu24 = new TH1F("Emunu", "#nu_{#mu};E [GeV];Entries", 150, -10, 300);
 
   
   TCanvas *c = new TCanvas("c","",1800,1800);

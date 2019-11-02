@@ -93,8 +93,9 @@ void the_fouth_task(){
   Long64_t N = enu->GetEntries();
   std::cout<<"N events: "<< N << std::endl;
     
-    for (Long64_t i = 0; i < N ; i++) {
-      enu->GetEntry(i);
+    for (Long64_t i = 0; i < N ; i++) 
+    {
+        enu->GetEntry(i);
         
         double_t e_pt = lep_e->Pt();
         double_t e_eta = lep_e->Eta();
@@ -110,22 +111,25 @@ void the_fouth_task(){
         if ( !(emet_pt > 25) ) continue;
         if ( !(enu_mt > 40) ) continue;
         if(!(e_medium == 1)&& !(e_Gradient == 1))continue;
-        if(n_e_e == 1 && n_e_mu == 0  && n_e_t == 0){
-        h_e_pt->Fill(e_pt);
-        h_e_eta->Fill(e_eta);
-        h_e_phi->Fill(e_phi);
-        h_e_energy->Fill(e_energy);
-        h_emet_pt->Fill(emet_pt);
-        h_emet_phi->Fill(emet_phi);
-        h_emet_energy->Fill(emet_energy);
-        h_enu_mt->Fill(enu_mt);
-    }
+      
+        if(n_e_e == 1 && n_e_mu == 0  && n_e_t == 0)
+        {
+          h_e_pt->Fill(e_pt);
+          h_e_eta->Fill(e_eta);
+          h_e_phi->Fill(e_phi);
+          h_e_energy->Fill(e_energy);
+          h_emet_pt->Fill(emet_pt);
+          h_emet_phi->Fill(emet_phi);
+          h_emet_energy->Fill(emet_energy);
+          h_enu_mt->Fill(enu_mt);
+        }
     }
     
     Long64_t K = munu->GetEntries();
     std::cout<<"N events: "<< K << std::endl;
       
-      for (Long64_t i = 0; i < K ; i++) {
+      for (Long64_t i = 0; i < K ; i++) 
+      {
              munu->GetEntry(i);
           
           double_t mu_pt = lep_mu->Pt();
@@ -141,16 +145,18 @@ void the_fouth_task(){
           if ( !(mumet_pt > 25) ) continue;
           if ( !(munu_mt > 40) ) continue;
           if(!(mu_medium == 1)&& !(mu_Gradient == 1))continue;
-         if(n_mu_e == 0 && n_mu_mu == 1 && n_mu_t == 0){
-          h_mu_pt->Fill(mu_pt);
-          h_mu_eta->Fill(mu_eta);
-          h_mu_phi->Fill(mu_phi);
-          h_mu_energy->Fill(mu_energy);
-          h_mumet_pt->Fill(mumet_pt);
-          h_mumet_phi->Fill(mumet_phi);
-          h_mumet_energy->Fill(mumet_energy);
-          h_munu_mt->Fill(munu_mt);
-      }
+        
+          if(n_mu_e == 0 && n_mu_mu == 1 && n_mu_t == 0)
+          {
+            h_mu_pt->Fill(mu_pt);
+            h_mu_eta->Fill(mu_eta);
+            h_mu_phi->Fill(mu_phi);
+            h_mu_energy->Fill(mu_energy);
+            h_mumet_pt->Fill(mumet_pt);
+            h_mumet_phi->Fill(mumet_phi);
+            h_mumet_energy->Fill(mumet_energy);
+            h_munu_mt->Fill(munu_mt);
+          }
       }
       
     

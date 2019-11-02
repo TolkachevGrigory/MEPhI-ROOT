@@ -31,14 +31,14 @@ void the_third_task()
     
     for (Long64_t i = 0; i < N ; i++) {
       enu->GetEntry(i);
-      tmenu->Fill(sqrt(2*lep_e->Pt()*met_e->Pt()*(1-cos(lep_e->Phi()+met_e->Phi()))));
+      tmenu->Fill(sqrt(2*lep_e->Pt()*met_e->Pt()*(1-cos(lep_e->Phi()-met_e->Phi()))));
                     }
     Long64_t K = munu->GetEntries();
       std::cout<<"N events: "<< K << std::endl;
         
         for (Long64_t i = 0; i < K ; i++) {
           munu->GetEntry(i);
-          tmmunu->Fill(sqrt(2*lep_mu->Pt()*met_mu->Pt()*(1-cos(lep_mu->Phi()+met_mu->Phi()))));
+          tmmunu->Fill(sqrt(2*lep_mu->Pt()*met_mu->Pt()*(1-cos(lep_mu->Phi()-met_mu->Phi()))));
        
         }
 

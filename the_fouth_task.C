@@ -1,3 +1,8 @@
+//Убедитесь что в каждом событии всегда ровно 1 лептон: (n_electrons + n_muons) == 1 && n_taus == 0 ,при этом lep_0==1 
+//это электрон, lep_0==2 это мюон.В данных там будет много КХД фона - с ним мы поработаем потом отдельно. 
+//Пока отрежьте события с MET < 25 GeV и mT <40. Чтобы еще больше подавить КХД фон примените ограничения на идентификацию 
+//[1, page 11, chapter 4.2] и изоляцию [2, page 11] лептона: lep_0_id_medium == 1 && lep_0_iso_Gradient == 1.
+//С ним мы тоже поработаем плотнее позже. 
 void the_fouth_task(){
   TFile* f1= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/21.root", "READ");
   TFile* f2= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/user.dponomar.17679514._000003.SM_WLepton.root", "READ");

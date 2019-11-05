@@ -115,7 +115,8 @@ void the_fouth_task(){
         if ( !(e_pt > 25) ) continue;
         if ( !(emet_pt > 25) ) continue;
         if ( !(enu_mt > 40) ) continue;
-        if(!(e_medium == 1)&& !(e_Gradient == 1))continue;
+        if(!(e_medium == 1))continue;
+        if(!(e_Gradient == 1))continue;
       
         if(n_e_e == 1 && n_e_mu == 0  && n_e_t == 0)
         {
@@ -149,7 +150,8 @@ void the_fouth_task(){
           if ( !(mu_pt > 25) ) continue;
           if ( !(mumet_pt > 25) ) continue;
           if ( !(munu_mt > 40) ) continue;
-          if(!(mu_medium == 1)&& !(mu_Gradient == 1))continue;
+          if(!(mu_medium == 1))continue;
+          if!(mu_Gradient == 1))continue;
         
           if(n_mu_e == 0 && n_mu_mu == 1 && n_mu_t == 0)
           {

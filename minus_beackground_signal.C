@@ -4,7 +4,7 @@ void minus_beackground_signal()
   TFile* f2= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/SW/nom_mu/background/minus.1.SM_WLepton.root", "READ");
 
   auto taunu = (TTree*)f1->Get("NOMINAL");
-  auto munu = (TTree*)f2->Get("NOMIAL");
+  auto munu = (TTree*)f2->Get("NOMINAL");
 
     //histo for comparing signal - beackground
   TH1F *h_tau_pt = new TH1F("tau_pt", "#tau^{#minus} ;P_{T} [GeV];Normalized Units", 150, 0, 120);
@@ -61,18 +61,30 @@ void minus_beackground_signal()
   UInt_t mu_isoTight = 0;
   int mu_n_bjets = 0;
   int tau_n_bjets = 0;
+  int n_tau_e;
+  int n_tau_mu;
+  int n_tau_t;
+  int n_mu_e;
+  int n_mu_mu;
+  int n_mu_t;
     
   taunu->SetBranchAddress("lep_0_p4", &lep_tau);
   taunu->SetBranchAddress("met_reco_p4", &met_tau);
   taunu->SetBranchAddress("lep_0_id_medium", &tau_medium);
   taunu->SetBranchAddress("lep_0_iso_FCTight", &tau_isoTight);
   taunu->SetBranchAddress("n_bjets", &tau_n_bjets);
-
+  taunu->SetBranchAddress("n_electrons", &n_tau_e);
+  taunu->SetBranchAddress("n_muons", &n_tau_mu);
+  taunu->SetBranchAddress("n_taus", &n_tau_t);
+    
   munu->SetBranchAddress("lep_0_p4", &lep_mu);
   munu->SetBranchAddress("met_reco_p4", &met_mu);
   munu->SetBranchAddress("lep_0_id_medium", &mu_medium);
   munu->SetBranchAddress("lep_0_iso_FCTight", &mu_isoTight);
   munu->SetBranchAddress("n_bjets", &mu_n_bjets);
+  munu->SetBranchAddress("n_electrons", &n_mu_e);
+  munu->SetBranchAddress("n_muons", &n_mu_mu);
+  munu->SetBranchAddress("n_taus", &n_mu_t);
     
 
   Long64_t N = taunu->GetEntries();
@@ -94,6 +106,7 @@ void minus_beackground_signal()
         
         if ( !( (fabs(tau_eta) < 2.4)   )) continue;
 
+        if(!((n_tau_e+n_tau_mu)==0 && n_tau_t == 1))
         // Cut for QCD
         
         if ( !(tau_pt > 25) ) continue;
@@ -130,6 +143,8 @@ void minus_beackground_signal()
           double_t munu_mt = sqrt(2*mu_pt*mumet_pt*(1-cos(phi_mu)));
           //mu eta gap
           if ( !( (fabs(mu_eta) < 2.4)   )) continue;
+          
+          if(!((n_mu_e+n_mu_mu)==1 && n_tau_t == 0))
 
           if ( !(mu_pt > 25) ) continue;
           if ( !(mumet_energy > 25) ) continue;
@@ -210,12 +225,12 @@ void minus_beackground_signal()
     gPad->BuildLegend(0.9,0.9,0.8,0.7);
 
     
-    c1->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_pt.pdf");
-    c2->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_l-Emiss.pdf");
-    c3->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/met_muandtau_minus.energy.pdf");
-    c4->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/muandtau_minus_mt.pdf");
-    c5->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_phi.pdf");
-    c6->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/met_muandtau_minus_phi.pdf");
-    c7->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep__muandtau_minus_eta.pdf");
+    //c1->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_pt.pdf");
+    //c2->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_l-Emiss.pdf");
+    //c3->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/met_muandtau_minus.energy.pdf");
+    //c4->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/muandtau_minus_mt.pdf");
+    //c5->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep_muandtau_minus_phi.pdf");
+    //c6->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/met_muandtau_minus_phi.pdf");
+    //c7->SaveAs("/Users/grigorijtolkacev/Desktop/ATLAS/SW/lep__muandtau_minus_eta.pdf");
     
 }

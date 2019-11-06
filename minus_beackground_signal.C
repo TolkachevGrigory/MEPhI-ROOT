@@ -4,7 +4,7 @@ void minus_beackground_signal()
   TFile* f2= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/SW/nom_mu/background/minus.1.SM_WLepton.root", "READ");
 
   auto taunu = (TTree*)f1->Get("NOMINAL");
-  auto munu = (TTree*)f2->Get("NOMI");
+  auto munu = (TTree*)f2->Get("NOMIAL");
 
     //histo for comparing signal - beackground
   TH1F *h_tau_pt = new TH1F("tau_pt", "#tau^{#minus} ;P_{T} [GeV];Normalized Units", 150, 0, 120);

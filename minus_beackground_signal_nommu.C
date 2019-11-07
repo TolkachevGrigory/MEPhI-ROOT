@@ -1,4 +1,4 @@
-void minus_beackground_signal()
+void minus_beackground_signal_nommu()
 {
   TFile* f1= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/SW/nom_mu/signal/minus.2.SM_WLepton.root", "READ");
   TFile* f2= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/SW/nom_mu/background/minus.1.SM_WLepton.root", "READ");

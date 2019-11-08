@@ -1,4 +1,4 @@
-//электронный кана сигнал/шум с татистическую ошибку
+//электронный канал сигнал/шум с статистической ошибкой минус
 void minus_beackground_signal_nomel()
 {
  TFile* f1= new TFile("/Users/grigorijtolkacev/Desktop/ATLAS/SW/mon_el/signal/minus.1.SM_WLepton.root", "READ");

@@ -75,13 +75,14 @@ oldtree->SetBranchAddress ( "n_e_looseBL" , &n_e_looseBL);
     gamma.SetPtEtaPhiE(ph_pt,ph_eta,ph_phi,0);
     met.SetPtEtaPhiE(metTST_pt,0,metTST_phi,metTST_E);
         
-    Double_t dPhi = fabs(gamma.Phi() - met.Phi());
+   // Double_t dPhi = fabs(gamma.Phi() - met.Phi());
+   //     
+   //     if(dPhi > 3.14159)
+   //     {
+   //         dPhi = 2*3.14159 - dPhi;
+   //     }
         
-        if(dPhi > 3.14159)
-        {
-            dPhi = 2*3.14159 - dPhi;
-        }
-        
+    Double_t dPhi = fabs(gamma.DeltaPhi(met)); 
         
     if ( !(metTST_pt>150) ) continue;
     if ( !((n_mu+n_e_looseBL) == 0) ) continue;

@@ -59,7 +59,7 @@ oldtree->SetBranchAddress ( "n_e_looseBL" , &n_e_looseBL);
     newtree->Branch("EventBranch", &event, "EventBranch/I");
     newtree->Branch("met", "TLorentzVector", &met);
     newtree->Branch("jet1", "TLorentzVector", &jet1);
-    newtree->Branch("jet2", "TLorentzVector", &jet1);
+    newtree->Branch("jet2", "TLorentzVector", &jet2);
     
     
     Long64_t N = oldtree->GetEntries();
